@@ -11,9 +11,22 @@ const displayphones = phones => {
     const phonContainer = document.getElementById('phone-container')
     // clear phone container cards vefore adding new cards
     phonContainer.textContent = '';
+
+    // display show all button if there are more 
+    const showall = document.getElementById('show-all-container');
+    if(phones.length > 11){
+        showall.classList.remove('hidden')
+    }
+    else{
+        showall.classList.add('hidden')
+    }
+
+    // display only first 10 phones
+    phones = phones.slice(0,10);
+
+
     phones.forEach(phone => {
-        console.log(phone);
-        
+        // console.log(phone);
         //2 create a div
         const phonecard = document.createElement('div');
         phonecard.classList = `card bg-base-100 shadow-xl`;
@@ -40,6 +53,12 @@ const handelsearch = () =>{
     const searchtext = searchField.value;
     console.log(searchtext);
     loadphone(searchtext)
+}
+
+const handelsearch2 = ()  =>{
+    const searchField2 = document.getElementById('search-container2')
+    const searchtext2 = searchField2.value;
+    loadphone(searchtext2);
 }
 
 loadphone();
